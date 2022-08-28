@@ -1,15 +1,16 @@
 package com.main.enniyal.service;
 
-import org.modelmapper.ModelMapper;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.main.enniyal.Projection.GetOrganizerProjection;
 import com.main.enniyal.dao.CompanyDAO;
 import com.main.enniyal.dao.OrganizerDAO;
-import com.main.enniyal.dto.AddOrganizerAndCompanyDTO;
-import com.main.enniyal.dto.CompanyDTO;
-import com.main.enniyal.dto.OrganizerDTO;
+import com.main.enniyal.dto.AddOrganizeDTO;
 import com.main.enniyal.dto.ResponseDTO;
 import com.main.enniyal.model.CompanyModel;
 import com.main.enniyal.model.OrganizerModel;
@@ -29,26 +30,41 @@ public class OrganizerServiceImpl implements OrganizerService {
 
 	@Override
 	@Transactional
-	public ResponseDTO addOrganizer(AddOrganizerAndCompanyDTO addOrganizerAndCompanyDTO) throws Exception {
-		ModelMapper mm = new ModelMapper();
-		CompanyDTO companyDTO = addOrganizerAndCompanyDTO.getCompany();
-		OrganizerDTO organizerDTO = addOrganizerAndCompanyDTO.getOrganizer();
-		System.out.println(companyDTO.getEmail());
-		validator.emailValidator(companyDTO.getEmail());
-		System.out.println(companyDTO.getMobileNumber().toString());
-		validator.isValidMobileNo(companyDTO.getMobileNumber().toString());
-		System.out.println(organizerDTO.getMobileNumber().toString());
-		validator.isValidMobileNo(organizerDTO.getMobileNumber().toString());
+	public ResponseDTO addOrganizer(AddOrganizeDTO addOrganizeDTO) throws Exception {
+		
+		validator.emailValidator(addOrganizeDTO.getEmailId());
+		validator.isValidMobileNo(addOrganizeDTO.getContactNumber().toString());
 		try {
-			CompanyModel companyModel = mm.map(companyDTO, CompanyModel.class);
-			OrganizerModel organizerModel = mm.map(organizerDTO, OrganizerModel.class);
+			CompanyModel companyModel = new CompanyModel(addOrganizeDTO.getCompanyName(),
+														 addOrganizeDTO.getContactNumber(),
+														 addOrganizeDTO.getEmailId(),
+														 addOrganizeDTO.getPlan(),
+														 addOrganizeDTO.getPayment(),
+														 addOrganizeDTO.getPaymentMethod(),
+														 addOrganizeDTO.getPaymentMode());
 			CompanyModel company= companyDAO.addCompany(companyModel);
+			OrganizerModel organizerModel = new OrganizerModel(addOrganizeDTO.getName(),
+					                                           addOrganizeDTO.getCompanyName(),
+					 										   addOrganizeDTO.getContactNumber(),
+					 										   addOrganizeDTO.getPlan(),
+					                                           addOrganizeDTO.getPayment());
 			organizerModel.setCompanyId(company);
 			organizerDAO.addOrganizer(organizerModel);
 			ResponseDTO response = new ResponseDTO("success", "user Created Successfully", "test");
 			return response;
 		} catch (Exception e) {
 			throw new Exception(e);
+		}
+	}
+
+	@Override
+	public List<GetOrganizerProjection> getOrganizer(Long companyId, Long organizerId) {
+		if (companyId != null && organizerId == null) {
+			return companyDAO.getCompany(companyId);
+		} else if (organizerId != null && companyId == null) {
+			return companyDAO.getOrganizer(organizerId);	
+		}else {
+			return companyDAO.getAllCompany();
 		}
 	}
 }

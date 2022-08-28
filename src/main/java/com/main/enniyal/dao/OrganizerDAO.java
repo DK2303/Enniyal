@@ -10,9 +10,13 @@ import com.main.enniyal.repository.OrganizerRepository;
 public class OrganizerDAO {
 	@Autowired
 	OrganizerRepository organizerRepo;
-	
+
 	public OrganizerModel addOrganizer(OrganizerModel organizerModel) {
 		return organizerRepo.save(organizerModel);
+	}
+
+	public void getOrganizer(String companyName, String organizerName) {
+		
 	}
 
 }

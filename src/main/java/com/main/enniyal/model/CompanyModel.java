@@ -66,6 +66,42 @@ public class CompanyModel {
 	@Column(name = "updated_dt_time")
 	private Date updatedDtTime;
 
+	@Column(name = "plan")
+	private String plan;
+
+	@Column(name = "payment")
+	private String payment;
+
+	@Column(name = "validity")
+	private Date validity;
+
+	@Column(name = "doj")
+	private Date dateOfJoin;
+
+	@Column(name = "status")
+	private Boolean status;
+
+	@Column(name = "payment_method")
+	private String paymentMethod;
+
+	@Column(name = "payment_mode")
+	private String paymentMode;
+
+	public CompanyModel() {
+		super();
+	}
+
+	public CompanyModel(String companyName, BigInteger mobileNumber, String email, String plan, String payment,
+			String paymentMethod, String paymentMode) {
+		this.companyName = companyName;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.plan = plan;
+		this.payment = payment;
+		this.paymentMethod = paymentMethod;
+		this.paymentMode = paymentMode;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -201,5 +237,60 @@ public class CompanyModel {
 	public void setUpdatedDtTime(Date updatedDtTime) {
 		this.updatedDtTime = updatedDtTime;
 	}
-	
+
+	public String getPlan() {
+		return plan;
+	}
+
+	public void setPlan(String plan) {
+		this.plan = plan;
+	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+	public Date getValidity() {
+		return validity;
+	}
+
+	public void setValidity(Date validity) {
+		this.validity = validity;
+	}
+
+	public Date getDateOfJoin() {
+		return dateOfJoin;
+	}
+
+	public void setDateOfJoin(Date dateOfJoin) {
+		this.dateOfJoin = dateOfJoin;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
 }

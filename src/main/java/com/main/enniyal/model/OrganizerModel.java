@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "organizer")
 public class OrganizerModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,10 +23,10 @@ public class OrganizerModel {
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private CompanyModel companyId;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "company_name")
 	private String companyName;
 
@@ -46,7 +46,7 @@ public class OrganizerModel {
 	private String payment;
 
 	@Column(name = "status")
-	private String status;
+	private Boolean status;
 
 	@Column(name = "isactive")
 	private Boolean isActive;
@@ -62,6 +62,20 @@ public class OrganizerModel {
 
 	@Column(name = "updated_dt_time")
 	private Date updatedDtTime;
+
+	public OrganizerModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public OrganizerModel(String name, String companyName, BigInteger mobileNumber, String plan, String payment) {
+
+		this.name = name;
+		this.companyName = companyName;
+		this.mobileNumber = mobileNumber;
+		this.plan = plan;
+		this.payment = payment;
+	}
 
 	public Long getId() {
 		return id;
@@ -135,11 +149,11 @@ public class OrganizerModel {
 		this.payment = payment;
 	}
 
-	public String getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
