@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 public class AddOrganizeDTO {
 	
+	//private Long clientId;
 	private String name;
 	private String companyName;
 	private BigInteger contactNumber;
@@ -14,6 +15,13 @@ public class AddOrganizeDTO {
 	private String payment;
 	
 	
+	
+//	public Long getClientId() {
+//		return clientId;
+//	}
+//	public void setClientId(Long clientId) {
+//		this.clientId = clientId;
+//	}
 	public String getName() {
 		return name;
 	}

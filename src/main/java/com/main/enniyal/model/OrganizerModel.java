@@ -17,8 +17,8 @@ import jakarta.persistence.Table;
 public class OrganizerModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long organizer_id;
 
 	@ManyToOne
 	@JoinColumn(name = "company_id")
@@ -77,12 +77,12 @@ public class OrganizerModel {
 		this.payment = payment;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getOrganizer_id() {
+		return organizer_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOrganizer_id(Long organizer_id) {
+		this.organizer_id = organizer_id;
 	}
 
 	public CompanyModel getCompanyId() {

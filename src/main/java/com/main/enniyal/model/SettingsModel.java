@@ -11,9 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "company")
-public class CompanyModel {
-
+@Table(name = "settings")
+public class SettingsModel {
+    
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long company_id;
@@ -21,88 +21,66 @@ public class CompanyModel {
 	@Column(name = "company_name")
 	private String companyName;
 
+	@Column(name = "company_logo")
+	private byte[] companyLogo;
+	
+	@Column(name = "file_name")
+	private String fileName;
+	
+	@Column(name = "file_type")
+	private String fileType;
+	
 	@Column(name = "mobile_number")
 	private BigInteger mobileNumber;
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
-
+	
 	@Column(name = "email")
 	private String email;
-
+	
 	@Column(name = "website_address")
 	private String websiteAddress;
-
+	
 	@Column(name = "gst_number")
 	private String gstNumber;
-
+	
 	@Column(name = "cin_number")
 	private String cinNumber;
-
+	
 	@Column(name = "tin_number")
 	private String tinNumber;
-
+	
 	@Column(name = "currency")
-	private BigInteger currency;
-
+	private String currency;
+	
 	@Column(name = "address")
 	private String address;
-
+	
 	@Column(name = "notes")
 	private String notes;
-
+	
 	@Column(name = "isactive")
 	private Boolean isActive;
-
+	
 	@Column(name = "created_by")
 	private String createdBy;
-
+	
 	@Column(name = "created_dt_time")
 	private Date createdDtTime;
-
+	
 	@Column(name = "updated_by")
 	private String updatedBy;
-
+	
 	@Column(name = "updated_dt_time")
 	private Date updatedDtTime;
-
-	@Column(name = "plan")
-	private String plan;
-
-	@Column(name = "payment")
-	private String payment;
-
-	@Column(name = "validity")
-	private Date validity;
-
-	@Column(name = "doj")
-	private Date dateOfJoin;
-
-	@Column(name = "status")
-	private Boolean status;
-
-	@Column(name = "payment_method")
-	private String paymentMethod;
-
-	@Column(name = "payment_mode")
-	private String paymentMode;
-
-	public CompanyModel() {
-		super();
-	}
-
-	public CompanyModel(String companyName, BigInteger mobileNumber, String email, String plan, String payment,
-			String paymentMethod, String paymentMode) {
-		this.companyName = companyName;
-		this.mobileNumber = mobileNumber;
-		this.email = email;
-		this.plan = plan;
-		this.payment = payment;
-		this.paymentMethod = paymentMethod;
-		this.paymentMode = paymentMode;
-	}
-
 	
+
+	public SettingsModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getCompany_id() {
 		return company_id;
 	}
@@ -117,6 +95,30 @@ public class CompanyModel {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public byte[] getCompanyLogo() {
+		return companyLogo;
+	}
+
+	public void setCompanyLogo(byte[] companyLogo) {
+		this.companyLogo = companyLogo;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
 	}
 
 	public BigInteger getMobileNumber() {
@@ -175,11 +177,11 @@ public class CompanyModel {
 		this.tinNumber = tinNumber;
 	}
 
-	public BigInteger getCurrency() {
+	public String getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(BigInteger currency) {
+	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
 
@@ -237,61 +239,5 @@ public class CompanyModel {
 
 	public void setUpdatedDtTime(Date updatedDtTime) {
 		this.updatedDtTime = updatedDtTime;
-	}
-
-	public String getPlan() {
-		return plan;
-	}
-
-	public void setPlan(String plan) {
-		this.plan = plan;
-	}
-
-	public String getPayment() {
-		return payment;
-	}
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-
-	public Date getValidity() {
-		return validity;
-	}
-
-	public void setValidity(Date validity) {
-		this.validity = validity;
-	}
-
-	public Date getDateOfJoin() {
-		return dateOfJoin;
-	}
-
-	public void setDateOfJoin(Date dateOfJoin) {
-		this.dateOfJoin = dateOfJoin;
-	}
-
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
-
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
-	public String getPaymentMode() {
-		return paymentMode;
-	}
-
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
 	}
 }

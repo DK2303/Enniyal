@@ -42,12 +42,14 @@ public class OrganizerServiceImpl implements OrganizerService {
 														 addOrganizeDTO.getPayment(),
 														 addOrganizeDTO.getPaymentMethod(),
 														 addOrganizeDTO.getPaymentMode());
+			//companyModel.setCompany_id(addOrganizeDTO.getClientId());
 			CompanyModel company= companyDAO.addCompany(companyModel);
 			OrganizerModel organizerModel = new OrganizerModel(addOrganizeDTO.getName(),
 					                                           addOrganizeDTO.getCompanyName(),
 					 										   addOrganizeDTO.getContactNumber(),
 					 										   addOrganizeDTO.getPlan(),
 					                                           addOrganizeDTO.getPayment());
+			//organizerModel.setOrganizer_id(addOrganizeDTO.getClientId());
 			organizerModel.setCompanyId(company);
 			organizerDAO.addOrganizer(organizerModel);
 			ResponseDTO response = new ResponseDTO("success", "user Created Successfully", "test");
