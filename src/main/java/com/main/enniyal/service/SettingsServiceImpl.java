@@ -1,13 +1,10 @@
 package com.main.enniyal.service;
 
-import org.json.JSONObject;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.main.enniyal.dao.SettingsDAO;
+import com.main.enniyal.dto.SettingsDTO;
 import com.main.enniyal.model.SettingsModel;
 
 @Service
@@ -17,41 +14,67 @@ public class SettingsServiceImpl implements SettingsService{
 	SettingsDAO settingsDAO;
 	
 	@Override
-	public void addCompanyInfo(String request) {
+	public SettingsModel addCompanyInfo(SettingsDTO request) {
 		//ObjectMapper om = new ObjectMapper();
-		
+		//System.out.println(request);
 		try {
+			
 			//JSONObject resObject = new JSONObject(request);
 			//SettingsModel settingsModel = om.readValue(request,SettingsModel.class);
-			//SettingsModel settingsModel = settingsMapper(resObject);
+			SettingsModel settingsModel = settingsMapper(request);
 			System.out.println("Model Mapper Completed");
-			//settingsDAO.addCompanyInfo(settingsModel);
+			return settingsDAO.addCompanyInfo(settingsModel);
 		} catch (Exception  e) {
 			// TODO Auto-generated catch block
 			System.out.println("Inside Exception");
 			e.printStackTrace();
 		}
+		return null;
+	}
+	@Override
+	public SettingsModel editCompanyInfo(SettingsDTO request) {
+try {
+			
+			//JSONObject resObject = new JSONObject(request);
+			//SettingsModel settingsModel = om.readValue(request,SettingsModel.class);
+			SettingsModel settingsModel = settingsMapper(request);
+			System.out.println("Model Mapper Completed");
+			return settingsDAO.addCompanyInfo(settingsModel);
+		} catch (Exception  e) {
+			// TODO Auto-generated catch block
+			System.out.println("Inside Exception");
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	private SettingsModel settingsMapper(JSONObject resObject) {
+	private SettingsModel settingsMapper(SettingsDTO request) {
 		SettingsModel settingsModel = new SettingsModel();
-		settingsModel.setCompanyName(resObject.getString("companyName"));
+		settingsModel.setId(request.getId() != null ? request.getId() : null);
+		settingsModel.setCompanyName(request.getCompanyName());
 		System.out.println("Before Company LOGO");
-		settingsModel.setCompanyLogo((byte[])resObject.get("companyLogo"));
+		settingsModel.setCompanyLogo(request.getCompanyLogo());
 		System.out.println("After Company LOGO");
-		settingsModel.setFileName(resObject.getString("fileName"));
-		settingsModel.setFileType(resObject.getString("fileType"));
-		settingsModel.setMobileNumber(resObject.getBigInteger("mobileNumber"));
-		settingsModel.setPhoneNumber(resObject.getString("phoneNumber"));
-		settingsModel.setEmail(resObject.getString("email"));
-		settingsModel.setWebsiteAddress(resObject.getString("websiteAddress"));
-		settingsModel.setGstNumber(resObject.getString("gstNumber"));
-		settingsModel.setCinNumber(resObject.getString("cinNumber"));
-		settingsModel.setTinNumber(resObject.getString("tinNumber"));
-		settingsModel.setCurrency(resObject.getString("currency"));
-		settingsModel.setAddress(resObject.getString("address"));
-		settingsModel.setNotes(resObject.getString("notes"));
+		settingsModel.setFileName(request.getFileName());
+		settingsModel.setFileType(request.getFileType());
+		settingsModel.setMobileNumber(request.getMobileNumber());
+		settingsModel.setPhoneNumber(request.getPhoneNumber());
+		settingsModel.setEmail(request.getEmail());
+		settingsModel.setWebsiteAddress(request.getWebsiteAddress());
+		settingsModel.setGstNumber(request.getGstNumber());
+		settingsModel.setCinNumber(request.getCinNumber());
+		settingsModel.setTinNumber(request.getTinNumber());
+		settingsModel.setCurrency(request.getCurrency());
+		settingsModel.setAddress(request.getAddress());
+		settingsModel.setNotes(request.getNotes());
 		return settingsModel;
 	}
+
+	@Override
+	public SettingsModel getCompanyInfo(String companyName) {
+		return settingsDAO.getCompanyInfo(companyName);
+	}
+
+	
 
 }

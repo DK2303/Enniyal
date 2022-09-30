@@ -12,6 +12,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>enniyal</name>
 	<description>Enniyal Spring Boot Project</description>
+	<packaging>war</packaging>
 	<properties>
 		<java.version>18</java.version>
 	</properties>
@@ -28,7 +29,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -78,7 +83,6 @@
 			<artifactId>json</artifactId>
 			<version>20220320</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

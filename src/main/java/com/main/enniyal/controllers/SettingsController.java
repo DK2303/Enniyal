@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.main.enniyal.dto.SettingsDTO;
+import com.main.enniyal.model.SettingsModel;
 import com.main.enniyal.service.SettingsService;
 
 @RestController
@@ -20,15 +21,23 @@ public class SettingsController {
 	SettingsService settingsService;
 	
 	@GetMapping("/get/{companyName}")
-	public void getCompanyinfo(@PathVariable("companyName") String companyName) {
+	public SettingsModel getCompanyinfo(@PathVariable("companyName") String companyName) {
 		System.out.println(companyName);
+		return settingsService.getCompanyInfo(companyName);
 	}
 	
 	@PostMapping("/add")
-	public String addCompnayInfo(@RequestBody SettingsDTO settingsDTO) {
+	public SettingsModel addCompnayInfo(@RequestBody SettingsDTO request) {
 		System.out.println("Test");
-		System.out.println(settingsDTO);
-		//settingsService.addCompanyInfo(request);
-		return "DATA UPLOADED";
+		//System.out.println(request);
+		return settingsService.addCompanyInfo(request);
+		//return "DATA UPLOADED";
+	}
+	@PostMapping("/put")
+	public SettingsModel editCompnayInfo(@RequestBody SettingsDTO request) {
+		System.out.println("Test");
+		//System.out.println(request);
+		return settingsService.editCompanyInfo(request);
+		//return "DATA UPLOADED";
 	}
 }

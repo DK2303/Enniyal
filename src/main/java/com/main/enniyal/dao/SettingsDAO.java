@@ -11,8 +11,14 @@ public class SettingsDAO {
 	@Autowired
 	SettingsRepository settingsRepo;
 	
-	public void addCompanyInfo(SettingsModel settingsModel) {
-		settingsRepo.save(settingsModel);
+	public SettingsModel addCompanyInfo(SettingsModel settingsModel) {
+		return settingsRepo.save(settingsModel);
 	}
 
+	public SettingsModel getCompanyInfo(String companyName) {	
+		SettingsModel settingsModel = settingsRepo.getCompanyInfo(companyName);
+		System.out.println(settingsModel);
+		return settingsModel;
+		
+	}
 }

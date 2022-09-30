@@ -1,6 +1,7 @@
 package com.main.enniyal.model;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -16,7 +17,7 @@ public class SettingsModel {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long company_id;
+	private Long id;
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -81,13 +82,16 @@ public class SettingsModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getCompany_id() {
-		return company_id;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setCompany_id(Long company_id) {
-		this.company_id = company_id;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
 
 	public String getCompanyName() {
 		return companyName;
@@ -240,4 +244,16 @@ public class SettingsModel {
 	public void setUpdatedDtTime(Date updatedDtTime) {
 		this.updatedDtTime = updatedDtTime;
 	}
+
+	@Override
+	public String toString() {
+		return "SettingsModel [company_id=" + id + ", companyName=" + companyName +""
+				+ ", fileName=" + fileName + ", fileType=" + fileType + ", mobileNumber="
+				+ mobileNumber + ", phoneNumber=" + phoneNumber + ", email=" + email + ", websiteAddress="
+				+ websiteAddress + ", gstNumber=" + gstNumber + ", cinNumber=" + cinNumber + ", tinNumber=" + tinNumber
+				+ ", currency=" + currency + ", address=" + address + ", notes=" + notes + ", isActive=" + isActive
+				+ ", createdBy=" + createdBy + ", createdDtTime=" + createdDtTime + ", updatedBy=" + updatedBy
+				+ ", updatedDtTime=" + updatedDtTime + "]";
+	}
+	
 }
