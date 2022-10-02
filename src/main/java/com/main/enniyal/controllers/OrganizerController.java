@@ -1,6 +1,5 @@
 package com.main.enniyal.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +18,18 @@ import com.main.enniyal.service.OrganizerService;
 @RestController
 @RequestMapping("/api/v1")
 public class OrganizerController {
-	
+
 	@Autowired
 	OrganizerService organizerService;
-	
+
 	@PostMapping("add/organizer")
 	public ResponseDTO addOrganizer(@RequestBody AddOrganizeDTO addOrganizeDTO) throws Exception {
 		return organizerService.addOrganizer(addOrganizeDTO);
 	}
-	
+
 	@GetMapping("get/organizer")
-	public List<GetOrganizerProjection> getOrganizer(@RequestParam(required = false, name = "companyId") Long companyId, 
-							 @RequestParam(required = false, name ="organizerId") Long organizerId) {
+	public List<GetOrganizerProjection> getOrganizer(@RequestParam(required = false, name = "companyId") Long companyId,
+			@RequestParam(required = false, name = "organizerId") Long organizerId) {
 		return organizerService.getOrganizer(companyId, organizerId);
 	}
 

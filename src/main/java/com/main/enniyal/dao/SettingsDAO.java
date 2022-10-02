@@ -10,15 +10,15 @@ import com.main.enniyal.repository.SettingsRepository;
 public class SettingsDAO {
 	@Autowired
 	SettingsRepository settingsRepo;
-	
+
 	public SettingsModel addCompanyInfo(SettingsModel settingsModel) {
 		return settingsRepo.save(settingsModel);
 	}
 
-	public SettingsModel getCompanyInfo(String companyName) {	
-		SettingsModel settingsModel = settingsRepo.getCompanyInfo(companyName);
+	public SettingsModel getSettingsInfo(String companyName) {
+		SettingsModel settingsModel = settingsRepo.getSettingsInfo(companyName);
 		System.out.println(settingsModel);
 		return settingsModel;
-		
+
 	}
 }

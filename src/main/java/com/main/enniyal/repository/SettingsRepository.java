@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.main.enniyal.model.SettingsModel;
 
 @Repository
-public interface SettingsRepository extends JpaRepository<SettingsModel, Long>{
-	
-	@Query(value = "select * from settings where company_name = :name",nativeQuery = true)
-	public SettingsModel getCompanyInfo(@Param("name") String name);
+public interface SettingsRepository extends JpaRepository<SettingsModel, Long> {
+
+	@Query(value = "select * from settings where company_name = :name", nativeQuery = true)
+	public SettingsModel getSettingsInfo(@Param("name") String name);
 }

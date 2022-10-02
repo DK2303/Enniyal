@@ -1,13 +1,14 @@
 package com.main.enniyal.service;
 
-import com.main.enniyal.dto.SettingsDTO;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.main.enniyal.model.SettingsModel;
 
 public interface SettingsService {
 
-	SettingsModel addCompanyInfo(SettingsDTO request);
+	SettingsModel addSettingsInfo(MultipartFile file, String request);
 
-	SettingsModel getCompanyInfo(String companyName);
+	SettingsModel getSettingsInfo(String companyName);
 
-	SettingsModel editCompanyInfo(SettingsDTO request);
+	SettingsModel updateSettingsInfo(MultipartFile file, String request);
 }

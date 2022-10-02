@@ -1,7 +1,6 @@
 package com.main.enniyal.model;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -14,7 +13,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "settings")
 public class SettingsModel {
-    
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -24,74 +23,70 @@ public class SettingsModel {
 
 	@Column(name = "company_logo")
 	private byte[] companyLogo;
-	
+
 	@Column(name = "file_name")
 	private String fileName;
-	
+
 	@Column(name = "file_type")
 	private String fileType;
-	
+
 	@Column(name = "mobile_number")
 	private BigInteger mobileNumber;
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "website_address")
 	private String websiteAddress;
-	
+
 	@Column(name = "gst_number")
 	private String gstNumber;
-	
+
 	@Column(name = "cin_number")
 	private String cinNumber;
-	
+
 	@Column(name = "tin_number")
 	private String tinNumber;
-	
+
 	@Column(name = "currency")
 	private String currency;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "notes")
 	private String notes;
-	
+
 	@Column(name = "isactive")
 	private Boolean isActive;
-	
+
 	@Column(name = "created_by")
 	private String createdBy;
-	
+
 	@Column(name = "created_dt_time")
 	private Date createdDtTime;
-	
+
 	@Column(name = "updated_by")
 	private String updatedBy;
-	
+
 	@Column(name = "updated_dt_time")
 	private Date updatedDtTime;
-	
 
 	public SettingsModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getCompanyName() {
 		return companyName;
@@ -247,13 +242,13 @@ public class SettingsModel {
 
 	@Override
 	public String toString() {
-		return "SettingsModel [company_id=" + id + ", companyName=" + companyName +""
-				+ ", fileName=" + fileName + ", fileType=" + fileType + ", mobileNumber="
-				+ mobileNumber + ", phoneNumber=" + phoneNumber + ", email=" + email + ", websiteAddress="
-				+ websiteAddress + ", gstNumber=" + gstNumber + ", cinNumber=" + cinNumber + ", tinNumber=" + tinNumber
-				+ ", currency=" + currency + ", address=" + address + ", notes=" + notes + ", isActive=" + isActive
-				+ ", createdBy=" + createdBy + ", createdDtTime=" + createdDtTime + ", updatedBy=" + updatedBy
-				+ ", updatedDtTime=" + updatedDtTime + "]";
+		return "SettingsModel [company_id=" + id + ", companyName=" + companyName + "" + ", fileName=" + fileName
+				+ ", fileType=" + fileType + ", mobileNumber=" + mobileNumber + ", phoneNumber=" + phoneNumber
+				+ ", email=" + email + ", websiteAddress=" + websiteAddress + ", gstNumber=" + gstNumber
+				+ ", cinNumber=" + cinNumber + ", tinNumber=" + tinNumber + ", currency=" + currency + ", address="
+				+ address + ", notes=" + notes + ", isActive=" + isActive + ", createdBy=" + createdBy
+				+ ", createdDtTime=" + createdDtTime + ", updatedBy=" + updatedBy + ", updatedDtTime=" + updatedDtTime
+				+ "]";
 	}
-	
+
 }

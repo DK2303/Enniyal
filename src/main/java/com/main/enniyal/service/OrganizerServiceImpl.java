@@ -1,6 +1,5 @@
 package com.main.enniyal.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import com.main.enniyal.dto.AddOrganizeDTO;
 import com.main.enniyal.dto.ResponseDTO;
 import com.main.enniyal.model.CompanyModel;
 import com.main.enniyal.model.OrganizerModel;
+import com.main.enniyal.model.SettingsModel;
 import com.main.enniyal.util.Validator;
 
 @Service
@@ -31,27 +31,27 @@ public class OrganizerServiceImpl implements OrganizerService {
 	@Override
 	@Transactional
 	public ResponseDTO addOrganizer(AddOrganizeDTO addOrganizeDTO) throws Exception {
-		
+		SettingsModel settingsModel = new SettingsModel();
 		validator.emailValidator(addOrganizeDTO.getEmailId());
 		validator.isValidMobileNo(addOrganizeDTO.getContactNumber().toString());
 		try {
 			CompanyModel companyModel = new CompanyModel(addOrganizeDTO.getCompanyName(),
-														 addOrganizeDTO.getContactNumber(),
-														 addOrganizeDTO.getEmailId(),
-														 addOrganizeDTO.getPlan(),
-														 addOrganizeDTO.getPayment(),
-														 addOrganizeDTO.getPaymentMethod(),
-														 addOrganizeDTO.getPaymentMode());
-			//companyModel.setCompany_id(addOrganizeDTO.getClientId());
-			CompanyModel company= companyDAO.addCompany(companyModel);
+					addOrganizeDTO.getContactNumber(), addOrganizeDTO.getEmailId(), addOrganizeDTO.getPlan(),
+					addOrganizeDTO.getPayment(), addOrganizeDTO.getPaymentMethod(), addOrganizeDTO.getPaymentMode());
+			// companyModel.setCompany_id(addOrganizeDTO.getClientId());
+			CompanyModel company = companyDAO.addCompany(companyModel);
 			OrganizerModel organizerModel = new OrganizerModel(addOrganizeDTO.getName(),
-					                                           addOrganizeDTO.getCompanyName(),
-					 										   addOrganizeDTO.getContactNumber(),
-					 										   addOrganizeDTO.getPlan(),
-					                                           addOrganizeDTO.getPayment());
-			//organizerModel.setOrganizer_id(addOrganizeDTO.getClientId());
+					addOrganizeDTO.getCompanyName(), addOrganizeDTO.getContactNumber(), addOrganizeDTO.getPlan(),
+					addOrganizeDTO.getPayment());
+			// organizerModel.setOrganizer_id(addOrganizeDTO.getClientId());
 			organizerModel.setCompanyId(company);
 			organizerDAO.addOrganizer(organizerModel);
+
+			// Add Settings
+			settingsModel.setCompanyName(addOrganizeDTO.getCompanyName());
+			settingsModel.setMobileNumber(addOrganizeDTO.getContactNumber());
+			settingsModel.setEmail(addOrganizeDTO.getEmailId());
+			organizerDAO.addSettings(settingsModel);
 			ResponseDTO response = new ResponseDTO("success", "user Created Successfully", "test");
 			return response;
 		} catch (Exception e) {
@@ -64,8 +64,8 @@ public class OrganizerServiceImpl implements OrganizerService {
 		if (companyId != null && organizerId == null) {
 			return companyDAO.getCompany(companyId);
 		} else if (organizerId != null && companyId == null) {
-			return companyDAO.getOrganizer(organizerId);	
-		}else {
+			return companyDAO.getOrganizer(organizerId);
+		} else {
 			return companyDAO.getAllCompany();
 		}
 	}
