@@ -26,7 +26,10 @@ public class CompanyModel {
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
-
+	
+	@Column(name = "password")
+	private String password;
+	
 	@Column(name = "email")
 	private String email;
 
@@ -294,4 +297,13 @@ public class CompanyModel {
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }

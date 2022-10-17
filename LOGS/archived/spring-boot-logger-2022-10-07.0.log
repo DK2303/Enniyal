@@ -1,0 +1,59 @@
+2022-10-07 23:26:32,849 ERROR org.springframework.boot.SpringApplication[main] Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.classic.pattern.ClassOfCallerConverter@7d446ed1 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:347)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:82)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:357)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at com.main.enniyal.EnniyalApplication.main(EnniyalApplication.java:12)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.classic.pattern.ClassOfCallerConverter@7d446ed1 - failed to parse integer string [1.] java.lang.NumberFormatException: For input string: "1."
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:234)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reinitialize(LogbackLoggingSystem.java:290)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:73)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:185)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:332)
+	... 19 common frames omitted
+2022-10-07 23:26:55,497 INFO [main] Starting EnniyalApplication using Java 18.0.2 on LAPTOP-KPAC7EBI with PID 20316 (D:\WorkSpace Enniyal\enniyal\target\classes started by Dinesh.A in D:\WorkSpace Enniyal\enniyal)
+2022-10-07 23:26:55,508 INFO [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-07 23:26:57,392 INFO [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-07 23:26:57,527 INFO [main] Finished Spring Data repository scanning in 116 ms. Found 3 JPA repository interfaces.
+2022-10-07 23:26:59,407 INFO [main] Tomcat initialized with port(s): 8010 (http)
+2022-10-07 23:26:59,420 INFO [main] Initializing ProtocolHandler ["http-nio-8010"]
+2022-10-07 23:26:59,420 INFO [main] Starting service [Tomcat]
+2022-10-07 23:26:59,420 INFO [main] Starting Servlet engine: [Apache Tomcat/10.0.23]
+2022-10-07 23:26:59,594 INFO [main] Initializing Spring embedded WebApplicationContext
+2022-10-07 23:26:59,598 INFO [main] Root WebApplicationContext: initialization completed in 3974 ms
+2022-10-07 23:27:00,038 INFO [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-07 23:27:00,160 INFO [main] HHH000412: Hibernate ORM core version 6.1.3.Final
+2022-10-07 23:27:00,843 WARN [main] HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2022-10-07 23:27:01,158 INFO [main] HikariPool-1 - Starting...
+2022-10-07 23:27:01,855 INFO [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1515f782
+2022-10-07 23:27:01,880 INFO [main] HikariPool-1 - Start completed.
+2022-10-07 23:27:02,001 INFO [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-10-07 23:27:02,001 WARN [main] HHH90000026: MySQL5Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2022-10-07 23:27:04,246 INFO [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-07 23:27:04,257 INFO [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-07 23:27:05,347 WARN [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-07 23:27:05,994 INFO [main] Starting ProtocolHandler ["http-nio-8010"]
+2022-10-07 23:27:06,037 INFO [main] Tomcat started on port(s): 8010 (http) with context path ''
+2022-10-07 23:27:06,058 INFO [main] Started EnniyalApplication in 11.36 seconds (process running for 12.985)
+2022-10-07 23:27:55,939 INFO [http-nio-8010-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-07 23:27:55,939 INFO [http-nio-8010-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-10-07 23:27:55,945 INFO [http-nio-8010-exec-1] Completed initialization in 6 ms

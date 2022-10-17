@@ -23,4 +23,8 @@ public interface CompanyRepository extends JpaRepository<CompanyModel, Long>{
 	@Query(value = GetOrganizerConstants.GET_ALL_COMPANY_AND_ORGANIZER, nativeQuery = true)
 	public List<GetOrganizerProjection> getAllCompany();
 
+	
+	@Query(value = "select * from company where email = :userName", nativeQuery = true)
+	public CompanyModel getUserData(@Param("userName") String userName);
+
 }

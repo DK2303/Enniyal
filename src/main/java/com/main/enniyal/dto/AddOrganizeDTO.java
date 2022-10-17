@@ -13,6 +13,7 @@ public class AddOrganizeDTO {
 	private String paymentMethod;
 	private String paymentMode;
 	private String payment;
+	private String password;
 	
 	
 	
@@ -69,5 +70,11 @@ public class AddOrganizeDTO {
 	}
 	public void setPayment(String payment) {
 		this.payment = payment;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

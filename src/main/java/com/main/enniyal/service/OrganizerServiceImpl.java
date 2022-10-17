@@ -3,6 +3,7 @@ package com.main.enniyal.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,12 +33,15 @@ public class OrganizerServiceImpl implements OrganizerService {
 	@Transactional
 	public ResponseDTO addOrganizer(AddOrganizeDTO addOrganizeDTO) throws Exception {
 		SettingsModel settingsModel = new SettingsModel();
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		validator.emailValidator(addOrganizeDTO.getEmailId());
 		validator.isValidMobileNo(addOrganizeDTO.getContactNumber().toString());
 		try {
 			CompanyModel companyModel = new CompanyModel(addOrganizeDTO.getCompanyName(),
 					addOrganizeDTO.getContactNumber(), addOrganizeDTO.getEmailId(), addOrganizeDTO.getPlan(),
 					addOrganizeDTO.getPayment(), addOrganizeDTO.getPaymentMethod(), addOrganizeDTO.getPaymentMode());
+			companyModel.setPassword(passwordEncoder.encode(addOrganizeDTO.getPassword()));
+
 			// companyModel.setCompany_id(addOrganizeDTO.getClientId());
 			CompanyModel company = companyDAO.addCompany(companyModel);
 			OrganizerModel organizerModel = new OrganizerModel(addOrganizeDTO.getName(),
