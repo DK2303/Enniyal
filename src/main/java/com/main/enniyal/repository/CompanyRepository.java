@@ -26,5 +26,8 @@ public interface CompanyRepository extends JpaRepository<CompanyModel, Long>{
 	
 	@Query(value = "select * from company where email = :userName", nativeQuery = true)
 	public CompanyModel getUserData(@Param("userName") String userName);
+	
+	@Query(value = "select * from company where company_id = :companyId", nativeQuery = true)
+	public CompanyModel getUserDataById(@Param("companyId") Long companyId);
 
 }

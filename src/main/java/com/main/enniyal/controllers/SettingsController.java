@@ -17,7 +17,7 @@ import com.main.enniyal.model.SettingsModel;
 import com.main.enniyal.service.SettingsService;
 
 @RestController
-@RequestMapping("/api/v1/company")
+@RequestMapping("/api/v1/settings")
 public class SettingsController {
 
 	
